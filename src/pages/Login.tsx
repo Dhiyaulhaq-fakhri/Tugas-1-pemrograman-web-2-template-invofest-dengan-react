@@ -5,6 +5,7 @@ import LabelInput from "../components/ui/LabelInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "../components/ui/Button";
+import { Link } from "react-router-dom";
 
 const schema = z.object({
     email: z.string().min(1, "Email harus diisi"),
@@ -39,6 +40,13 @@ export default function Login() {
                     <Button label="Login" variant="primary" />
                 </div>
             </form>
+
+            <p className="mt-6">
+                Belum punya akun?
+                <Link to="/register" className="text-blue-500">
+                Daftar di sini
+                </Link>
+            </p>
         </div>
     )
 }

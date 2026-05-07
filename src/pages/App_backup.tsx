@@ -78,8 +78,8 @@ function App() {
                 <Competitioncard
                     title='Poster Design Competition'
                     description='Poster Design Competition ini adalah kompetisi untuk menciptakan 
-          suatu karya dalam bentuk poster digital yang komunikatif dan inspiratif, guna 
-          menyuarakan gagasan terhadap permasalahan yang ada sekarang ini.'
+            suatu karya dalam bentuk poster digital yang komunikatif dan inspiratif, guna 
+            menyuarakan gagasan terhadap permasalahan yang ada sekarang ini.'
                     image='https://www.invofest-harkatnegeri.com/assets/competition-card/software_dev.png'
                     buttonText='INFO SELENGKAPNYA'
                     buttonProps={{ variant: "primary" }}

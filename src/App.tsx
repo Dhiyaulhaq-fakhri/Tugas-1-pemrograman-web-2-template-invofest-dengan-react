@@ -1,26 +1,38 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Beranda from "./pages/Beranda";
+import Competition from "./pages/Competition";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Registrasievent from "./pages/RegistrasiEvent";
+import Seminar from "./pages/Seminar";
+import Talkshow from "./pages/Talkshow";
+import MainLayout from "./layout/MainLayout";
+import AuthLayout from "./layout/AuthLayout";
+import Workshop from "./pages/Workshop";
+
 
 function App() {
-  return (
-    <>
-      <div className="container mx-auto grid grid-cols-2 gap-6 p-10">
-        <Login />
+  return <BrowserRouter>
+    <Routes>
+      {/* landing page */}
+      <Route path="/" element={<MainLayout />} >
+        <Route path="/" element={<Beranda />} />
+        <Route path="/competition" element={<Competition />} />
+        <Route path="/seminar" element={<Seminar />} />
+        <Route path="/talkshow" element={<Talkshow />} />
+        <Route path="/workshop" element={<Workshop />} />
+      </Route>
 
-        <Register />
-      </div>
+      {/* auth */}
+      <Route path="/" element={<AuthLayout />} >
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
 
-      <div className="flex justify-center m-10">
-        <div className="border rounded-lg max-w-100 min-w-80">
-          <h2 className="text-center m-5">Registrasi event</h2>
-          <div className="flex align-middle justify-center">
-            <Registrasievent />
-          </div>
-        </div>
-      </div>
-    </>
-  );
+    </Routes>
+
+
+
+  </BrowserRouter>;
 }
 
 export default App;
