@@ -3,7 +3,7 @@ import LabelInput from "./LabelInput";
 
 interface FormInputProps {
     text: string;
-    tipe: string;
+    tipe?: string;
     name: string;
     register: any;
     error?: string;

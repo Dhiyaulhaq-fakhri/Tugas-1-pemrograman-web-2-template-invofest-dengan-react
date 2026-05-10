@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Button from "../components/ui/Button";
-import FormInput from "../components/ui/FormInput";
+import Forminput from "../components/Forminput";
 
 const schema = z.object({
     nama: z.string().min(1, "Nama harus diisi!"),
@@ -20,37 +20,33 @@ export default function Registrasievent() {
     return (
         <div>
             <form onSubmit={handleSubmit(console.log())}>
-                <FormInput
+                <Forminput
                     text="nama"
                     tipe="text"
                     name="nama"
                     register={register}
-                    error={errors.nama?.message}
-                />
+                    error={errors.nama?.message} label={""} placeholder={""}                />
 
-                <FormInput
+                <Forminput
                     text="alamat"
                     tipe="text"
                     name="alamat"
                     register={register}
-                    error={errors.alamat?.message}
-                />
+                    error={errors.alamat?.message} label={""} placeholder={""}                />
 
-                <FormInput
+                <Forminput
                     text="email"
                     tipe="text"
                     name="email"
                     register={register}
-                    error={errors.email?.message}
-                />
+                    error={errors.email?.message} label={""} placeholder={""}                />
 
-                <FormInput
+                <Forminput
                     text="Bio"
                     tipe="text"
                     name="Bio"
                     register={register}
-                    error={errors.Bio?.message}
-                />
+                    error={errors.Bio?.message} label={""} placeholder={""}                />
 
                 <div className="flex justify-center p-5">
                     <Button label="Registrasi" variant="primary" />
