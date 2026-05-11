@@ -11,6 +11,9 @@ import Workshop from "./pages/Workshop";
 import CreateCategory from "./pages/dashboard/categories/CreateCategory";
 import CreateEvent from "./pages/dashboard/events/CreateEvent";
 import CreateSpeakers from "./pages/dashboard/speakers/CreateSpeakers";
+import DashboardIndex from "./pages/dashboard/DashboardIndex";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import DashboardLayout from "./layout/DashboardLayout";
 
 
 function App() {
@@ -24,9 +27,7 @@ function App() {
         <Route path="/talkshow" element={<Talkshow />} />
         <Route path="/workshop" element={<Workshop />} />
 
-        <Route path="/category/create" element={<CreateCategory />} />
-        <Route path="/events/create" element={<CreateEvent />} />
-        <Route path="/speaker/create" element={<CreateSpeakers />} />
+
       </Route>
 
       {/* auth */}
@@ -35,6 +36,16 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Route>
 
+      {/* Dashboard */}
+      <Route element={<ProtectedRoute />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardIndex />} />
+
+          <Route path="/dashboard/category/create" element={<CreateCategory />} />
+          <Route path="/dashboard/events/create" element={<CreateEvent />} />
+          <Route path="/dashboard/speaker/create" element={<CreateSpeakers />} />
+        </Route>
+      </Route>
     </Routes>
 
 

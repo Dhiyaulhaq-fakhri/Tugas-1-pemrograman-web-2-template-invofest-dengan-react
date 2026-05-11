@@ -3,7 +3,8 @@ import Forminput from "../components/Forminput"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "../components/ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
 
 // tentukan data
 type FormData = {
@@ -11,7 +12,7 @@ type FormData = {
     password: string;
 };
 
-// scema validasi
+// schema validasi
 const schema = z.object({
     email: z.string().min(1, "Email harus diisi"),
     password: z.string().min(8, "Password minimal 8 angka"),
@@ -22,9 +23,20 @@ export default function Login() {
         resolver: zodResolver(schema),
     })
 
+    const navigate = useNavigate();
+    const login = useAuthStore((state) => state.login);
+
     const onSubmit = (data: FormData) => {
-        console.log(data)
-    }
+        if(data.email == "admin@gmail.com" && data.password == "password123") {
+            // login sukses
+            alert("login sukses");
+            login(data.email);
+            navigate("/dashboard");
+        } else {
+            // login gagal
+            alert("login gagal");
+        }
+    };
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>

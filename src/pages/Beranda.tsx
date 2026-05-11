@@ -1,4 +1,3 @@
-import Collapse from "../components/Collapse";
 import Eventcard from "../components/Eventcard";
 import FrequentlyAskedQuestion from "../components/FrequentlyAskedQuestion";
 import { Infocard } from "../components/Infocard";
