@@ -14,6 +14,9 @@ import CreateSpeakers from "./pages/dashboard/speakers/CreateSpeakers";
 import DashboardIndex from "./pages/dashboard/DashboardIndex";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DashboardLayout from "./layout/DashboardLayout";
+import Listcategory from "./pages/dashboard/categories/ListCategory";
+import Listevent from "./pages/dashboard/events/ListEvent";
+import Listspeaker from "./pages/dashboard/speakers/ListSpeaker";
 
 
 function App() {
@@ -42,8 +45,14 @@ function App() {
           <Route path="/dashboard" element={<DashboardIndex />} />
 
           <Route path="/dashboard/category/create" element={<CreateCategory />} />
+          <Route path="/dashboard/category/listcategory" element={<Listcategory />} />
+
           <Route path="/dashboard/events/create" element={<CreateEvent />} />
+          <Route path="/dashboard/events/listevent" element={<Listevent />} />
+
           <Route path="/dashboard/speaker/create" element={<CreateSpeakers />} />
+          <Route path="/dashboard/speaker/Listspeaker" element={<Listspeaker />} />
+
         </Route>
       </Route>
     </Routes>

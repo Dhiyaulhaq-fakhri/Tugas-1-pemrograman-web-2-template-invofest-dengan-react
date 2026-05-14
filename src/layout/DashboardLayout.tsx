@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, SquarePlus } from "lucide-react";
 
 export default function DashboardLayout() {
     const logout = useAuthStore((state: { logout: any; }) => state.logout);
@@ -25,14 +25,26 @@ export default function DashboardLayout() {
                 {/* dua */}
                 <div>
                     <nav className="flex flex-col gap-5">
-                        <Link to="/dashboard" className="p-4 text-gray-500 text-lg hover:bg-white rounded-lg transition ease-in duration-150 flex items-center gap-3">
+                        <Link to="/dashboard" className="p-4 text-gray-700 text-lg hover:bg-white rounded-lg transition ease-in duration-150 flex items-center gap-3">
                             <span>
                                 <HomeIcon size={18} />
                             </span>Dashboard
                         </Link>
-                        <Link to="/dashboard/category/create" className="p-4 text-gray-500 text-lg hover:bg-white rounded-lg transition ease-in duration-150">Kategori</Link>
-                        <Link to="/dashboard/events/create" className="p-4 text-gray-500 text-lg hover:bg-white rounded-lg transition ease-in duration-150">Events</Link>
-                        <Link to="/dashboard/speaker/create" className="p-4 text-gray-500 text-lg hover:bg-white rounded-lg transition ease-in duration-150">Pembicara</Link>
+                        <Link to="/dashboard/category/listcategory" className="p-4 text-gray-700 text-lg hover:bg-white rounded-lg transition ease-in duration-150 flex items-center gap-3">
+                            <span>
+                                <SquarePlus size={18} />
+                            </span>Kategori
+                        </Link>
+                        <Link to="/dashboard/events/listevent" className="p-4 text-gray-700 text-lg hover:bg-white rounded-lg transition ease-in duration-150 flex items-center gap-3">
+                            <span>
+                                <SquarePlus size={18} />
+                            </span>Events
+                        </Link>
+                        <Link to="/dashboard/speaker/listspeaker" className="p-4 text-gray-700 text-lg hover:bg-white rounded-lg transition ease-in duration-150 flex items-center gap-3">
+                            <span>
+                                <SquarePlus size={18} />
+                            </span>Pembicara
+                        </Link>
                     </nav>
                 </div>
 
