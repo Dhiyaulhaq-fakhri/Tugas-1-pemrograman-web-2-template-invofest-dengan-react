@@ -27,7 +27,7 @@ export default function Login() {
     const login = useAuthStore((state) => state.login);
 
     const onSubmit = (data: FormData) => {
-        if(data.email == "admin@gmail.com" && data.password == "password123") {
+        if(data.email == "24090113" && data.password == "24090113") {
             // login sukses
             alert("login sukses");
             login(data.email);

@@ -21,9 +21,20 @@ export default function Competition() {
                 />
             </div>
 
-            <div className="bg-[#e7cfd5] p-54">
-                <h2 className="text-center text-6xl font-semibold text-red-900 mb-4">DESKRIPSI KOMPETISI</h2>
-                <p className="text-gray-600 leading-relaxed text-xl">Kompetisi atau perlombaan yang ada dalam kegiatan INVOFEST (Infomatics Vocational Festival) 2025 adalah diantaranya National Poster Design Competition, UI UX Design Competition, dan juga UI/UX Design Competition. Kompetisi dalam INVOFEST ini mengusung tema “From Creation to Innovation”Tema ini bertujuan mengajak generasi muda untuk mengembangkan inovasi dan kreativitas guna membentuk kelompok yang memiliki potensi luar biasa, yang mampu mewujudkan masa depan yang berkelanjutan. Melalui pendekatan ini, diharapkan generasi ini akan berperan dalam menciptakan solusi-solusi baru untuk tantangan masa kini dan mendatang, baik dalam hal teknologi, lingkungan, pendidikan, maupun tanggung jawab sosial.</p>
+            <div className="bg-[#FEE3EC]">
+                <div>
+                    <img src="https://www.invofest-harkatnegeri.com/assets/wave-top.png" alt="" className="w-full" />
+                </div>
+
+                <div className="p-54">
+                    <h2 className="text-center text-6xl font-semibold text-red-900 mb-4">DESKRIPSI KOMPETISI</h2>
+                    <p className="text-gray-600 leading-relaxed text-xl">Kompetisi atau perlombaan yang ada dalam kegiatan INVOFEST (Infomatics Vocational Festival) 2025 adalah diantaranya National Poster Design Competition, UI UX Design Competition, dan juga UI/UX Design Competition. Kompetisi dalam INVOFEST ini mengusung tema “From Creation to Innovation”Tema ini bertujuan mengajak generasi muda untuk mengembangkan inovasi dan kreativitas guna membentuk kelompok yang memiliki potensi luar biasa, yang mampu mewujudkan masa depan yang berkelanjutan. Melalui pendekatan ini, diharapkan generasi ini akan berperan dalam menciptakan solusi-solusi baru untuk tantangan masa kini dan mendatang, baik dalam hal teknologi, lingkungan, pendidikan, maupun tanggung jawab sosial.</p>
+                </div>
+
+                <div>
+                    <img src="https://www.invofest-harkatnegeri.com/assets/wave-bot.png" alt="" className="w-full" />
+                </div>
+
             </div>
 
             <h1 className='text-center text-5xl font-semibold text-red-900 pt-10 '>DAFTAR KOMPETISI</h1>
@@ -60,7 +71,7 @@ export default function Competition() {
                     buttonText='INFO SELENGKAPNYA'
                     buttonProps={{ variant: "primary" }}
                 />
-            </div> 
+            </div>
 
             <FrequentlyAskedQuestion />
 

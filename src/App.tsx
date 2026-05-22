@@ -17,6 +17,9 @@ import DashboardLayout from "./layout/DashboardLayout";
 import Listcategory from "./pages/dashboard/categories/ListCategory";
 import Listevent from "./pages/dashboard/events/ListEvent";
 import Listspeaker from "./pages/dashboard/speakers/ListSpeaker";
+import EditCategory from "./pages/dashboard/categories/EditCategory";
+import Editspeaker from "./pages/dashboard/speakers/EditSpeaker";
+import Editevent from "./pages/dashboard/events/EditEvent";
 
 
 function App() {
@@ -46,12 +49,15 @@ function App() {
 
           <Route path="/dashboard/category/create" element={<CreateCategory />} />
           <Route path="/dashboard/category/listcategory" element={<Listcategory />} />
+          <Route path="/dashboard/category/editcategory/:id" element={<EditCategory />} />
 
           <Route path="/dashboard/events/create" element={<CreateEvent />} />
           <Route path="/dashboard/events/listevent" element={<Listevent />} />
+          <Route path="/dashboard/events/editevent/:id" element={<Editevent />} />
 
           <Route path="/dashboard/speaker/create" element={<CreateSpeakers />} />
           <Route path="/dashboard/speaker/Listspeaker" element={<Listspeaker />} />
+          <Route path="/dashboard/speaker/editspeaker/:id" element={<Editspeaker />} />
 
         </Route>
       </Route>

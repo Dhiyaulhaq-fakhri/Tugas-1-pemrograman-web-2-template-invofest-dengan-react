@@ -1,118 +1,84 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useNavigate } from "react-router-dom"; // Tambahkan untuk navigasi halaman
+import { useState } from "react"; // Untuk status tombol loading
 import Forminput from "../../../components/Forminput";
 import Button from "../../../components/ui/Button";
 
 type FormData = {
     judul: string;
-    deskripsi: string;
-    kategori: string;
-    lokasi: string;
-    tanggal: string;
-    harga: string;
-    quota: string;
 }
 
 const schema = z.object({
-    judul: z.string().min(1, "nama event wajib di isi"),
-    deskripsi: z.string().min(1, "deskripsi event wajib di isi"),
-    kategori: z.string().min(1, "kategori event wajib di isi"),
-    lokasi: z.string().min(1, "lokasi event wajib di isi"),
-    tanggal: z.string().min(1, "waktu event wajib di isi"),
-    harga: z.string().min(1, "harga tiket event wajib di isi"),
-    quota: z.string().min(1, "jumlah kursi event wajib di isi"),
+    judul: z.string().min(1, "Nama kategori wajib diisi")
 });
 
 export default function CreateCategory() {
-    const { register, handleSubmit, formState: { errors }, } = useForm({
+    const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(schema),
     });
 
-    const onSubmit = (data: FormData) => {
-        console.log(data)
-    }
+    // Jalur eksekusi simpan data ke backend
+    const onSubmit = async (data: FormData) => {
+        setIsSubmitting(true);
+        try {
+            // Sesuaikan URL-nya jika nanti sudah pakai environment variable (.env)
+            const response = await fetch("http://localhost:3000/categories", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // Ketik 'name' sebagai key-nya karena backend menerima property 'name'
+                body: JSON.stringify({ name: data.judul }), 
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(result.message || "Kategori baru sukses dibuat!");
+                navigate("/dashboard/category/listcategory"); // Balik ke laman daftar kategori
+            } else {
+                alert(result.message || "Gagal membuat kategori baru");
+            }
+        } catch (error) {
+            console.error("Error create category:", error);
+            alert("Terjadi kesalahan koneksi ke server backend");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
-        <div className="px-54">
+        <div className="px-5"> {/* Sedikit diturunkan padding horizontalnya agar tidak terlalu menjepit di layar standar */}
             <div className="flex flex-col text-center p-5">
-                <h1 className="font-semibold text-5xl text-red-900">Create new category</h1>
+                <h1 className="font-semibold text-4xl text-red-900">Create new category</h1>
                 <p className="text-gray-600">Silahkan isi semua data dengan benar</p>
             </div>
-            <div className="flex justify-center max-w-800px gap-6 ">
+            <div className="flex justify-center max-w-lg mx-auto gap-6 mt-4">
 
-
-                <form onSubmit={handleSubmit(onSubmit)} className="bg-[#FEE3EC] rounded-lg p-10 ">
+                <form onSubmit={handleSubmit(onSubmit)} className="bg-[#FEE3EC] rounded-lg p-10 w-full shadow-sm">
                     <Forminput
-                        label="Masukan judul"
+                        label="Masukan nama kategori"
                         tipe="text"
                         name="judul"
                         register={register}
                         error={errors.judul?.message}
-                        placeholder="masukan judul event"
+                        placeholder="isi kategori disini"
                     />
 
-                    <Forminput
-                        label="Masukan deskripsi"
-                        tipe="text"
-                        name="deskripsi"
-                        register={register}
-                        error={errors.deskripsi?.message}
-                        placeholder="masukan deskripsi event"
-                    />
-
-                    <Forminput
-                        label="Masukan kategori"
-                        tipe="text"
-                        name="kategori"
-                        register={register}
-                        error={errors.kategori?.message}
-                        placeholder="isi kategori event"
-                    />
-
-                    <Forminput
-                        label="Masukan lokasi"
-                        tipe="text"
-                        name="lokasi"
-                        register={register}
-                        error={errors.lokasi?.message}
-                        placeholder="isi lokasi event"
-                    />
-
-                    <Forminput
-                        label="Masukan tanggal"
-                        tipe="text"
-                        name="tanggal"
-                        register={register}
-                        error={errors.tanggal?.message}
-                        placeholder="masukan tanggal event"
-                    />
-
-                    <Forminput
-                        label="Masukan harga"
-                        tipe="text"
-                        name="harga"
-                        register={register}
-                        error={errors.harga?.message}
-                        placeholder="berapa harga event"
-                    />
-
-                    <Forminput
-                        label="Masukan quota event"
-                        tipe="text"
-                        name="quota"
-                        register={register}
-                        error={errors.quota?.message}
-                        placeholder="berapa quota event"
-                    />
-
-
-                    <div className="flex justify-center">
-                        <Button label="Buat Category" variant="primary" />
+                    <div className="flex justify-center mt-6">
+                        {/* Ubah label tombol secara dinamis saat sedang memproses request */}
+                        <Button 
+                            label={isSubmitting ? "Sedang Menyimpan..." : "Buat Category"} 
+                            variant="primary" 
+                        />
                     </div>
-
                 </form>
             </div>
-        </div >
+        </div>
     );
 };

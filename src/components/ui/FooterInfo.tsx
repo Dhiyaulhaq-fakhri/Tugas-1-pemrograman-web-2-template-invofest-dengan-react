@@ -4,7 +4,7 @@ import Redirect from "./Redirect";
 const FooterInfo = () => {
     return (
         <div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-55 py-10 bg-[#e7cfd5]'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-55 py-10 bg-[#FEE3EC]'>
                 {/* col 1 */}
                 <div>
                     <img src="https://www.invofest-harkatnegeri.com/assets/nav-logo.png" />
@@ -59,7 +59,7 @@ const FooterInfo = () => {
                 </div>
             </div>
 
-            <div className="flex justify-between px-54 py-10 bg-[#e7cfd5] text-gray-600">
+            <div className="flex justify-between px-54 py-10 bg-[#FEE3EC] text-gray-600">
                 <p>© 2025 INVOFEST. All Right Reserved </p>
                 <div className="flex flex-row gap-5">
                     <Play />
