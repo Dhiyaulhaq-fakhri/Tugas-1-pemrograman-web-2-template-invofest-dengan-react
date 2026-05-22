@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function EditCategory() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     // 1. Ambil ID dari parameter URL router
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function EditCategory() {
     useEffect(() => {
         const fetchCategoryDetail = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/categories/${id}`);
+                const response = await fetch(`${apiUrl}/categories`);
                 if (!response.ok) {
                     throw new Error("Kategori gagal ditemukan");
                 }
@@ -43,7 +44,7 @@ export default function EditCategory() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch(`http://localhost:3000/categories/${id}`, {
+            const response = await fetch(`${apiUrl}/categories/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

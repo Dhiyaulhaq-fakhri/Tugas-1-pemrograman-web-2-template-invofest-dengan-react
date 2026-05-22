@@ -21,33 +21,40 @@ export default function Registrasievent() {
         <div>
             <form onSubmit={handleSubmit(console.log())}>
                 <Forminput
-                    text="nama"
+                    label="Masukan nama"
                     tipe="text"
                     name="nama"
                     register={register}
-                    error={errors.nama?.message} label={""} placeholder={""}                />
+                    error={errors.nama?.message}
+                    placeholder="nama"
+                />
 
                 <Forminput
-                    text="alamat"
+                    label="Masukan alamat"
                     tipe="text"
                     name="alamat"
                     register={register}
-                    error={errors.alamat?.message} label={""} placeholder={""}                />
+                    error={errors.alamat?.message}
+                    placeholder="Email"
+                />
 
                 <Forminput
-                    text="email"
+                    label="Masukan Email"
                     tipe="text"
                     name="email"
                     register={register}
-                    error={errors.email?.message} label={""} placeholder={""}                />
+                    error={errors.email?.message}
+                    placeholder="Email"
+                />
 
                 <Forminput
-                    text="Bio"
+                    label="Masukan bio"
                     tipe="text"
-                    name="Bio"
+                    name="bio"
                     register={register}
-                    error={errors.Bio?.message} label={""} placeholder={""}                />
-
+                    error={errors.Bio?.message}
+                    placeholder="Email"
+                />
                 <div className="flex justify-center p-5">
                     <Button label="Registrasi" variant="primary" />
                 </div>

@@ -6,6 +6,7 @@ interface CategoryOption { id: number; name: string; }
 interface SpeakerOption { id: number; name: string; role: string; }
 
 export default function EditEvent() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
 
@@ -28,9 +29,9 @@ export default function EditEvent() {
             try {
                 // 1. Ambil data Opsi (Kategori & Speakers) dan Detail Event sekaligus
                 const [resCat, resSpk, resEvt] = await Promise.all([
-                    fetch("http://localhost:3000/categories"),
-                    fetch("http://localhost:3000/speakers"),
-                    fetch(`http://localhost:3000/events/${id}`)
+                    fetch(`${apiUrl}/categories`),
+                    fetch(`${apiUrl}/speakers`),
+                    fetch(`${apiUrl}/events/${id}`)
                 ]);
 
                 const cats = await resCat.json();
@@ -84,7 +85,7 @@ export default function EditEvent() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch(`http://localhost:3000/events/${id}`, {
+            const response = await fetch(`${apiUrl}/events/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

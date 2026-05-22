@@ -47,7 +47,7 @@ export default function Listevent() {
     const handleDelete = async (id: number) => {
         if (window.confirm("Apakah kamu yakin ingin menghapus event ini?")) {
             try {
-                const response = await fetch(`http://localhost:3000/events/${id}`, {
+                const response = await fetch(`${apiUrl}/events/${id}`, {
                     method: "DELETE",
                 });
                 const result = await response.json();

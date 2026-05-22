@@ -29,6 +29,7 @@ const schema = z.object({
 });
 
 export default function CreateEvent() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,8 +49,8 @@ export default function CreateEvent() {
         const fetchOptions = async () => {
             try {
                 const [resCat, resSpk] = await Promise.all([
-                    fetch("http://localhost:3000/categories"),
-                    fetch("http://localhost:3000/speakers")
+                    fetch(`${apiUrl}/categories`),
+                    fetch(`${apiUrl}/speakers`)
                 ]);
                 const cats = await resCat.json();
                 const spks = await resSpk.json();
@@ -80,7 +81,7 @@ export default function CreateEvent() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch("http://localhost:3000/events", {
+            const response = await fetch(`${apiUrl}/events`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

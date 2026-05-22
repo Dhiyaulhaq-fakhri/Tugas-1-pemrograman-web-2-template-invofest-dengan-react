@@ -15,6 +15,7 @@ const schema = z.object({
 });
 
 export default function CreateCategory() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -27,7 +28,7 @@ export default function CreateCategory() {
         setIsSubmitting(true);
         try {
             // Sesuaikan URL-nya jika nanti sudah pakai environment variable (.env)
-            const response = await fetch("http://localhost:3000/categories", {
+            const response = await fetch(`${apiUrl}/categories`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

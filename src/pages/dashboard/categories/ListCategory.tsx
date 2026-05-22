@@ -9,13 +9,14 @@ interface CategoryType {
 }
 
 export default function Listcategory() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     // 1. Ambil data dari backend
     const fetchCategories = async () => {
         try {
-            const response = await fetch("http://localhost:3000/categories");
+            const response = await fetch(`${apiUrl}/categories`);
             const data = await response.json();
             setCategories(data);
         } catch (error) {
@@ -33,7 +34,7 @@ export default function Listcategory() {
     const handleDelete = async (id : number) => {
         if (window.confirm("Apakah kamu yakin ingin menghapus kategori ini?")) {
             try {
-                const response = await fetch(`http://localhost:3000/categories/${id}`, {
+                const response = await fetch(`${apiUrl}/categories/${id}`, {
                     method: "DELETE",
                 });
                 
