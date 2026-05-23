@@ -1,3 +1,7 @@
+penerapan endpoint biodata di /saya
+link deploy vercel : [@link](https://tugas-1-pemrograman-web-2-template.vercel.app/)
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

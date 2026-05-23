@@ -20,6 +20,7 @@ import Listspeaker from "./pages/dashboard/speakers/ListSpeaker";
 import EditCategory from "./pages/dashboard/categories/EditCategory";
 import Editspeaker from "./pages/dashboard/speakers/EditSpeaker";
 import Editevent from "./pages/dashboard/events/EditEvent";
+import Saya from "./pages/Saya";
 
 
 function App() {
@@ -61,6 +62,10 @@ function App() {
 
         </Route>
       </Route>
+
+      {/* Tidak pakai layout */}
+      <Route path="/saya" element={<Saya />} />
+
     </Routes>
 
 
